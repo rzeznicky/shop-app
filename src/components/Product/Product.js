@@ -3,6 +3,7 @@ import styles from './Product.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
+import ProductImage from '../ProductImage/ProductImage';
 
 const Product = ({id, name, title, basePrice, colors, sizes}) => {
 
@@ -31,10 +32,10 @@ const Product = ({id, name, title, basePrice, colors, sizes}) => {
   const addToCart = e => {
     e.preventDefault();
     const product = {
-      Name: {title},
-      Price: getPrice(),
-      Size: currentSize,
-      Color: currentColor
+      name: {title},
+      price: getPrice(),
+      size: currentSize,
+      color: currentColor
     }
     console.log(product);
     return product;
@@ -42,12 +43,7 @@ const Product = ({id, name, title, basePrice, colors, sizes}) => {
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-        <img 
-          className={styles.image}
-          alt={title}
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${name}--${currentColor}.jpg`} />
-      </div>
+      <ProductImage title={title} name={name} color={currentColor}/>
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
